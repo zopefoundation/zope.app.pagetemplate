@@ -55,7 +55,7 @@ class Test(PlacelessSetup, unittest.TestCase):
         namespace['outer'] = outer
         namespace['intermediate'] = intermediate
         result = inner.pt_render(namespace)
-        self.assertEquals(result, EXPECTED)
+        self.assertEquals(result.replace("\r\n", "\n"), EXPECTED)
 
 
 def test_suite():

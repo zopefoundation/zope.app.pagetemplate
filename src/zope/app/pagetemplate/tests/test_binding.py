@@ -41,9 +41,9 @@ class BindingTestCase(PlacelessSetup, unittest.TestCase):
     def test_binding(self):
         from zope.publisher.browser import TestRequest
         comp = PTComponent(Content(), TestRequest())
-        self.assertEqual(comp.index(), "42\n")
-        self.assertEqual(comp.nothing(), "\n")
-        self.assertEqual(comp.default(), "42\n")
+        self.assertEqual(comp.index().replace("\r\n", "\n"), "42\n")
+        self.assertEqual(comp.nothing().replace("\r\n", "\n"), "\n")
+        self.assertEqual(comp.default().replace("\r\n", "\n"), "42\n")
 
 def test_suite():
     return unittest.makeSuite(BindingTestCase)
