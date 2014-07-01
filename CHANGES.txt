@@ -5,8 +5,8 @@ Changes
 3.11.3 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Do not explicitly require ``zope.security [untrustedpython]``. Older
+  ``zope.pagetemplate`` versions require it, newer ones do not.
 
 3.11.2 (2010-09-25)
 -------------------
