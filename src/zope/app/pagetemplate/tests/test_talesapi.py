@@ -12,23 +12,23 @@
 #
 ##############################################################################
 """Tales API Tests
-
-$Id$
 """
+
+
 from datetime import datetime
-from doctest import DocTestSuite
-from zope.interface import implements
+import unittest
+
+from zope.interface import implementer
 from zope.size.interfaces import ISized
 from zope.traversing.interfaces import IPhysicallyLocatable
 from zope.dublincore.interfaces import IZopeDublinCore
 
 from zope.app.pagetemplate.talesapi import ZopeTalesAPI
 
+@implementer(IZopeDublinCore, # not really, but who's checking. ;)
+             IPhysicallyLocatable, # not really
+             ISized)
 class TestObject(object):
-
-    implements(IZopeDublinCore, # not really, but who's checking. ;)
-               IPhysicallyLocatable, # not really
-               ISized)
 
     description = u"This object stores some number of apples"
     title = u"apple cart"
@@ -44,63 +44,42 @@ class TestObject(object):
     def getName(self):
         return u'apples'
 
-testObject = TestObject()
 
-def title():
-    """
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.title
-    u'apple cart'
-    """
+class TestAPI(unittest.TestCase):
 
-def description():
-    """
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.description
-    u'This object stores some number of apples'
-    """
+    def test_title(self):
+        api = ZopeTalesAPI(TestObject())
+        self.assertEqual(TestObject.title, api.title)
 
-def name():
-    """
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.name()
-    u'apples'
-    """
+    def test_description(self):
+        api = ZopeTalesAPI(TestObject())
+        self.assertEqual(TestObject.description, api.description)
 
-def title_or_name():
-    """
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.title_or_name()
-    u'apple cart'
+    def test_name(self):
+        api = ZopeTalesAPI(TestObject())
+        self.assertEqual(TestObject().getName(), api.name())
 
-    >>> testObject = TestObject()
-    >>> testObject.title = u""
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.title_or_name()
-    u'apples'
-    """
+    def test_title_or_name(self):
+        api = ZopeTalesAPI(TestObject())
+        self.assertEqual(TestObject.title, api.title_or_name())
 
-def size():
-    """
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.size()
-    u'5 apples'
-    """
+        testObject2 = TestObject()
+        testObject2.title = u""
+        api = ZopeTalesAPI(testObject2)
+        self.assertEqual(u'apples', api.title_or_name())
 
-def modified():
-    """
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.modified
-    datetime.datetime(2003, 1, 2, 3, 4, 5)
-    """
+    def test_size(self):
+        api = ZopeTalesAPI(TestObject())
+        self.assertEqual(TestObject().sizeForDisplay(), api.size())
 
-def created():
-    """
-    >>> api = ZopeTalesAPI(testObject)
-    >>> api.created
-    datetime.datetime(2000, 10, 1, 23, 11)
-    """
+    def test_modified(self):
+        api = ZopeTalesAPI(TestObject())
+        self.assertEqual(TestObject.modified, api.modified)
+
+    def test_created(self):
+        api = ZopeTalesAPI(TestObject())
+        self.assertEqual(TestObject.created, api.created)
 
 
 def test_suite():
-    return DocTestSuite()
+    return unittest.defaultTestLoader.loadTestsFromName(__name__)

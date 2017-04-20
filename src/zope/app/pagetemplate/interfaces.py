@@ -12,9 +12,8 @@
 #
 ##############################################################################
 """Interfaces for apis to make available to TALES
-
-$Id$
 """
+
 __docformat__ = 'restructuredtext'
 
 import zope.interface

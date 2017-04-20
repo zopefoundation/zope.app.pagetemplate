@@ -12,15 +12,27 @@
 #
 ##############################################################################
 """URL quoting for ZPT
-
-$Id$
 """
+
 __docformat__ = 'restructuredtext'
 
-import urllib
-from zope.interface import implements
-from zope.traversing.interfaces import IPathAdapter
+import six
+from six.moves import urllib_parse as urllib
 
+from zope.interface import implementer
+from zope.traversing.interfaces import IPathAdapter
+from zope.app.pagetemplate.interfaces import IURLQuote
+
+def _safe_as_text(s):
+    if isinstance(s, six.text_type):
+        return s
+
+    try:
+        return six.text_type(s, 'utf-8')
+    except UnicodeDecodeError:
+        return s
+
+@implementer(IPathAdapter, IURLQuote)
 class URLQuote(object):
     r"""An adapter for URL quoting.
 
@@ -30,7 +42,7 @@ class URLQuote(object):
         >>> quoter = URLQuote(u'Roki\u0161kis')
         >>> quoter.quote()
         'Roki%C5%A1kis'
-        
+
         >>> quoter.quote_plus()
         'Roki%C5%A1kis'
 
@@ -38,30 +50,29 @@ class URLQuote(object):
     UTF-8, and tries to convert it to unicode.
 
         >>> quoter = URLQuote('Roki%C5%A1kis')
-        >>> quoter.unquote()
-        u'Roki\u0161kis'
-        
-        >>> quoter.unquote_plus()
-        u'Roki\u0161kis'
+        >>> isinstance(quoter.unquote(), six.text_type)
+        True
+
+        >>> isinstance(quoter.unquote_plus(), six.text_type)
+        True
 
     If the unquoted string can't be converted to unicode, the unquoted
-    string is returned.
+    string is returned. On Python 2, this will be a byte str, but under Python 3,
+    the returned string is always going to be unicode.
 
         >>> quoter = URLQuote('S%F6derk%F6ping')
-        >>> quoter.unquote()
-        'S\xf6derk\xf6ping'
+        >>> isinstance(quoter.unquote(), str)
+        True
 
-        >>> quoter.unquote_plus()
-        'S\xf6derk\xf6ping'
+        >>> isinstance(quoter.unquote_plus(), str)
+        True
     """
 
-    __used_for__ = basestring
-    implements(IPathAdapter)
 
     def __init__(self, context):
-        if not isinstance(context, basestring):
+        if not isinstance(context, six.string_types):
             context = str(context)
-        elif isinstance(context, unicode):
+        elif six.PY2 and isinstance(context, six.text_type):
             context = context.encode('utf-8')
         self.context = context
 
@@ -75,17 +86,8 @@ class URLQuote(object):
 
     def unquote(self):
         """Return the object's URL unquote representation."""
-        unquoted = urllib.unquote(self.context)
-        try:
-            return unicode(unquoted, 'utf-8')
-        except UnicodeDecodeError:
-            return unquoted
+        return _safe_as_text(urllib.unquote(self.context))
 
     def unquote_plus(self):
         """Return the object's URL unquote_plus representation."""
-        unquoted = urllib.unquote_plus(self.context)
-        try:
-            return unicode(unquoted, 'utf-8')
-        except UnicodeDecodeError:
-            return unquoted
-
+        return _safe_as_text(urllib.unquote_plus(self.context))

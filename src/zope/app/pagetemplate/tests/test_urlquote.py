@@ -17,7 +17,6 @@ I kept the tests quite small, just covering that the functions actually do
 something (and don't really scramble stuff). We are relying on the python urllib
 to be functional to avoid test duplication.
 
-$Id$
 """
 
 import unittest
@@ -31,35 +30,25 @@ class TestObject(object):
     def __str__(self):
         return "www.google.de"
 
-def quote_simple():
-    """
-    >>> q = URLQuote(u"www.google.de")
-    >>> q.quote()
-    'www.google.de'
-    >>> q.unquote()
-    u'www.google.de'
-    >>> q.quote_plus()
-    'www.google.de'
-    >>> q.unquote_plus()
-    u'www.google.de'
-    """
+class TestQuote(unittest.TestCase):
 
-def quote_cast_needed():
-    """
-    >>> q = URLQuote(TestObject())
-    >>> q.quote()
-    'www.google.de'
-    >>> q.unquote()
-    u'www.google.de'
-    >>> q.quote_plus()
-    'www.google.de'
-    >>> q.unquote_plus()
-    u'www.google.de'
-    """
+    def test_quote_simple(self):
+        q = URLQuote(u"www.google.de")
+        self.assertEqual(u'www.google.de', q.quote())
+        self.assertEqual(u'www.google.de', q.unquote())
+        self.assertEqual(u'www.google.de', q.quote_plus())
+        self.assertEqual(u'www.google.de', q.unquote_plus())
+
+    def  test_quote_cast_needed(self):
+        q = URLQuote(TestObject())
+        self.assertEqual(u'www.google.de', q.quote())
+        self.assertEqual(u'www.google.de', q.unquote())
+        self.assertEqual(u'www.google.de', q.quote_plus())
+        self.assertEqual(u'www.google.de', q.unquote_plus())
 
 def test_suite():
     return unittest.TestSuite((
-        DocTestSuite(),
+        unittest.makeSuite(TestQuote),
         DocTestSuite('zope.app.pagetemplate.urlquote'),
         ))
 
