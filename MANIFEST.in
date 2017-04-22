@@ -2,5 +2,8 @@ include *.py
 include *.txt
 include *.rst
 include buildout.cfg
+include .coveragerc
+include tox.ini
 recursive-include src *.pt
 recursive-include src *.zcml
+
