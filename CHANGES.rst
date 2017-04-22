@@ -2,8 +2,8 @@
 Changes
 =======
 
-4.0.0 (unreleased)
--------------------
+4.0.0 (2017-04-22)
+------------------
 
 - Add support for Python 3 and PyPy.
 - Do not explicitly require ``zope.security [untrustedpython]``. Older
