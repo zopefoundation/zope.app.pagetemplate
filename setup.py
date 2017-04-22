@@ -20,29 +20,41 @@ from setuptools import setup, find_packages
 import os.path
 
 def read(*rnames):
-    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+    with open(os.path.join(os.path.dirname(__file__), *rnames)) as f:
+        return f.read()
 
-version = '3.11.3dev'
+version = '4.0.0.dev0'
 
 
 setup(name='zope.app.pagetemplate',
       version=version,
-      url='http://pypi.python.org/pypi/zope.app.pagetemplate',
+      url='http://github.com/zopefoundation/zope.app.pagetemplate',
       author='Zope Corporation and Contributors',
       author_email='zope-dev@zope.org',
       description='PageTemplate integration for Zope 3',
       long_description=(
-        read('README.txt')
+        read('README.rst')
         + '\n\n.. contents::\n\n' +
-        read('CHANGES.txt')
+        read('CHANGES.rst')
         ),
       license='ZPL 2.1',
-      classifiers=['Environment :: Web Environment',
-                   'Intended Audience :: Developers',
-                   'License :: OSI Approved :: Zope Public License',
-                   'Programming Language :: Python',
-                   'Framework :: Zope3',
-                   ],
+      classifiers=[
+          'Development Status :: 5 - Production/Stable',
+          'Environment :: Web Environment',
+          'Intended Audience :: Developers',
+          'License :: OSI Approved :: Zope Public License',
+          'Programming Language :: Python',
+          'Programming Language :: Python:: 2.7',
+          'Programming Language :: Python:: 3.4',
+          'Programming Language :: Python:: 3.5',
+          'Programming Language :: Python:: 3.6',
+          'Programming Language :: Python :: Implementation :: CPython',
+          'Programming Language :: Python :: Implementation :: PyPy',
+          'Natural Language :: English',
+          'Operating System :: OS Independent',
+          'Topic :: Internet :: WWW/HTTP',
+          'Framework :: Zope3'
+      ],
       packages=find_packages('src'),
       package_dir={'': 'src'},
       namespace_packages=['zope', 'zope.app'],
@@ -67,6 +79,7 @@ setup(name='zope.app.pagetemplate',
               'zope.component [hook,test]',
               'zope.container',
               'zope.publisher',
+              'zope.testrunner',
               ],
           },
       zip_safe=False,

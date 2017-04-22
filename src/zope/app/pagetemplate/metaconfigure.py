@@ -13,8 +13,6 @@
 ##############################################################################
 """ZCML configuration directives for configuring the default zope:
 namespace in TALES.
-
-$Id$
 """
 __docformat__ = 'restructuredtext'
 
@@ -23,4 +21,3 @@ from zope.browserpage.metaconfigure import clear
 from zope.browserpage.metadirectives import IExpressionTypeDirective
 from zope.browserpage.metaconfigure import expressiontype
 from zope.browserpage.metaconfigure import registerType
-

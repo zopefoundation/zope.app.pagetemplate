@@ -15,9 +15,10 @@
 
 $Id$
 """
+
 __docformat__ = 'restructuredtext'
 
-from zope.interface import implements
+from zope.interface import implementer
 from zope.size.interfaces import ISized
 from zope.security.interfaces import Unauthorized
 from zope.tales.interfaces import ITALESFunctionNamespace
@@ -26,9 +27,10 @@ from zope.dublincore.interfaces import IDCTimes
 from zope.dublincore.interfaces import IZopeDublinCore
 from zope.traversing.api import getName
 
+@implementer(IDCTimes,
+             IDCDescriptiveProperties,
+             ITALESFunctionNamespace)
 class ZopeTalesAPI(object):
-
-    implements(IDCTimes, IDCDescriptiveProperties, ITALESFunctionNamespace)
 
     def __init__(self, context):
         self.context = context
@@ -36,33 +38,33 @@ class ZopeTalesAPI(object):
     def setEngine(self, engine):
         self._engine = engine
 
+    @property
     def title(self):
         a = IZopeDublinCore(self.context, None)
         if a is None:
             raise AttributeError('title')
         return a.title
-    title = property(title)
 
+    @property
     def description(self):
         a = IZopeDublinCore(self.context, None)
         if a is None:
             raise AttributeError('description')
         return a.description
-    description = property(description)
 
+    @property
     def created(self):
         a = IZopeDublinCore(self.context, None)
         if a is None:
             raise AttributeError('created')
         return a.created
-    created = property(created)
 
+    @property
     def modified(self):
         a = IZopeDublinCore(self.context, None)
         if a is None:
             raise AttributeError('modified')
         return a.modified
-    modified = property(modified)
 
     def name(self):
         return getName(self.context)

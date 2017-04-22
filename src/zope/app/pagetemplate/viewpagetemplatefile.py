@@ -13,7 +13,6 @@
 ##############################################################################
 """File-based page templates that can be used as methods on views.
 
-$Id$
 """
 __docformat__ = 'restructuredtext'
 

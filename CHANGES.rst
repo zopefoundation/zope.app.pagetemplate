@@ -2,9 +2,10 @@
 Changes
 =======
 
-3.11.3 (unreleased)
+4.0.0 (unreleased)
 -------------------
 
+- Add support for Python 3 and PyPy.
 - Do not explicitly require ``zope.security [untrustedpython]``. Older
   ``zope.pagetemplate`` versions require it, newer ones do not.
 
