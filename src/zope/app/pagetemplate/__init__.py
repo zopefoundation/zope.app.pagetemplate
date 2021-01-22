@@ -11,10 +11,6 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-"""Zope-specific Page Templates
-
-$Id$
-"""
-__docformat__ = 'restructuredtext'
+"""Zope-specific Page Templates."""
 
 from zope.browserpage import ViewPageTemplateFile

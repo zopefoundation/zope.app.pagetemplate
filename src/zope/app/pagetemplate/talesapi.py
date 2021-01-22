@@ -27,6 +27,7 @@ from zope.dublincore.interfaces import IDCTimes
 from zope.dublincore.interfaces import IZopeDublinCore
 from zope.traversing.api import getName
 
+
 @implementer(IDCTimes,
              IDCDescriptiveProperties,
              ITALESFunctionNamespace)

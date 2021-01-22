@@ -26,6 +26,7 @@ from zope.traversing.interfaces import ITraversable
 from zope.app.pagetemplate.tests.testpackage.content import Content
 from zope.app.pagetemplate.tests.testpackage.content import PTComponent
 
+
 def setUpTraversal():
     from zope.traversing.testing import setUp
     setUp()
@@ -45,8 +46,6 @@ class BindingTestCase(PlacelessSetup, unittest.TestCase):
         self.assertEqual(comp.nothing().replace("\r\n", "\n"), "\n")
         self.assertEqual(comp.default().replace("\r\n", "\n"), "42\n")
 
+
 def test_suite():
     return unittest.makeSuite(BindingTestCase)
-
-if __name__=='__main__':
-    unittest.main()
