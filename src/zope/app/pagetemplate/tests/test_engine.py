@@ -1,5 +1,6 @@
 import unittest
 
+
 class BBBTests(unittest.TestCase):
 
     def test_BBB_imports(self):
@@ -22,6 +23,7 @@ class BBBTests(unittest.TestCase):
         from zope.app.pagetemplate.engine import TrustedEngine
         from zope.app.pagetemplate.engine import AppPT
         from zope.app.pagetemplate.engine import TrustedAppPT
+
 
 def test_suite():
     return unittest.makeSuite(BBBTests)

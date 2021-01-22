@@ -25,8 +25,9 @@ from zope.dublincore.interfaces import IZopeDublinCore
 
 from zope.app.pagetemplate.talesapi import ZopeTalesAPI
 
-@implementer(IZopeDublinCore, # not really, but who's checking. ;)
-             IPhysicallyLocatable, # not really
+
+@implementer(IZopeDublinCore,  # not really, but who's checking. ;)
+             IPhysicallyLocatable,  # not really
              ISized)
 class TestObject(object):
 

@@ -17,6 +17,7 @@ $Id$
 """
 from zope.browserpage import ViewPageTemplateFile
 
+
 class Content(object):
     def getSomething(self):
         return 42

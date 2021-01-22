@@ -14,8 +14,8 @@
 """URLQuote Tests
 
 I kept the tests quite small, just covering that the functions actually do
-something (and don't really scramble stuff). We are relying on the python urllib
-to be functional to avoid test duplication.
+something (and don't really scramble stuff). We are relying on the python
+urllib to be functional to avoid test duplication.
 
 """
 
@@ -30,6 +30,7 @@ class TestObject(object):
     def __str__(self):
         return "www.google.de"
 
+
 class TestQuote(unittest.TestCase):
 
     def test_quote_simple(self):
@@ -39,18 +40,16 @@ class TestQuote(unittest.TestCase):
         self.assertEqual(u'www.google.de', q.quote_plus())
         self.assertEqual(u'www.google.de', q.unquote_plus())
 
-    def  test_quote_cast_needed(self):
+    def test_quote_cast_needed(self):
         q = URLQuote(TestObject())
         self.assertEqual(u'www.google.de', q.quote())
         self.assertEqual(u'www.google.de', q.unquote())
         self.assertEqual(u'www.google.de', q.quote_plus())
         self.assertEqual(u'www.google.de', q.unquote_plus())
 
+
 def test_suite():
     return unittest.TestSuite((
         unittest.makeSuite(TestQuote),
         DocTestSuite('zope.app.pagetemplate.urlquote'),
-        ))
-
-if __name__ == '__main__':
-    unittest.main()
+    ))

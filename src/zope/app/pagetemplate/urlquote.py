@@ -23,6 +23,7 @@ from zope.interface import implementer
 from zope.traversing.interfaces import IPathAdapter
 from zope.app.pagetemplate.interfaces import IURLQuote
 
+
 def _safe_as_text(s):
     if isinstance(s, six.text_type):
         return s
@@ -31,6 +32,7 @@ def _safe_as_text(s):
         return six.text_type(s, 'utf-8')
     except UnicodeDecodeError:
         return s
+
 
 @implementer(IPathAdapter, IURLQuote)
 class URLQuote(object):
@@ -57,8 +59,8 @@ class URLQuote(object):
         True
 
     If the unquoted string can't be converted to unicode, the unquoted
-    string is returned. On Python 2, this will be a byte str, but under Python 3,
-    the returned string is always going to be unicode.
+    string is returned. On Python 2, this will be a byte str, but under
+    Python 3, the returned string is always going to be unicode.
 
         >>> quoter = URLQuote('S%F6derk%F6ping')
         >>> isinstance(quoter.unquote(), str)
@@ -67,7 +69,6 @@ class URLQuote(object):
         >>> isinstance(quoter.unquote_plus(), str)
         True
     """
-
 
     def __init__(self, context):
         if not isinstance(context, six.string_types):

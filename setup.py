@@ -19,24 +19,26 @@
 from setuptools import setup, find_packages
 import os.path
 
+
 def read(*rnames):
     with open(os.path.join(os.path.dirname(__file__), *rnames)) as f:
         return f.read()
 
-version = '4.0.1.dev0'
+
+version = '4.1.0.dev0'
 
 
 setup(name='zope.app.pagetemplate',
       version=version,
       url='http://github.com/zopefoundation/zope.app.pagetemplate',
-      author='Zope Corporation and Contributors',
+      author='Zope Foundation and Contributors',
       author_email='zope-dev@zope.org',
       description='PageTemplate integration for Zope 3',
       long_description=(
-        read('README.rst')
-        + '\n\n.. contents::\n\n' +
-        read('CHANGES.rst')
-        ),
+          read('README.rst')
+          + '\n\n.. contents::\n\n' +
+          read('CHANGES.rst')
+      ),
       license='ZPL 2.1',
       classifiers=[
           'Development Status :: 5 - Production/Stable',
@@ -45,9 +47,11 @@ setup(name='zope.app.pagetemplate',
           'License :: OSI Approved :: Zope Public License',
           'Programming Language :: Python',
           'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3.4',
           'Programming Language :: Python :: 3.5',
           'Programming Language :: Python :: 3.6',
+          'Programming Language :: Python :: 3.7',
+          'Programming Language :: Python :: 3.8',
+          'Programming Language :: Python :: 3.9',
           'Programming Language :: Python :: Implementation :: CPython',
           'Programming Language :: Python :: Implementation :: PyPy',
           'Natural Language :: English',
@@ -73,14 +77,14 @@ setup(name='zope.app.pagetemplate',
           'zope.size',
           'zope.tales',
           'zope.traversing',
-          ],
+      ],
       extras_require={
           "test": [
               'zope.component [hook,test]',
               'zope.container',
               'zope.publisher',
               'zope.testrunner',
-              ],
-          },
+          ],
+      },
       zip_safe=False,
       )

@@ -9,6 +9,7 @@ from zope.publisher.browser import TestRequest
 
 from zope.browserpage import ViewPageTemplateFile
 
+
 class Context(object):
     pass
 
@@ -49,15 +50,15 @@ class Test(PlacelessSetup, unittest.TestCase):
         context = Context()
         request = TestRequest()
         view = View(context, request)
-        self.failUnless('outer body slot' in outer(view))
+        self.assertIn('outer body slot', outer(view))
 
         namespace = inner.pt_getContext(view, request)
         namespace['outer'] = outer
         namespace['intermediate'] = intermediate
         result = inner.pt_render(namespace)
-        self.assertEquals(result.replace("\r\n", "\n"), EXPECTED)
+        self.assertEqual(result.replace("\r\n", "\n"), EXPECTED)
 
 
 def test_suite():
-    loader=unittest.TestLoader()
+    loader = unittest.TestLoader()
     return loader.loadTestsFromTestCase(Test)
