@@ -26,4 +26,4 @@ class BBBTests(unittest.TestCase):
 
 
 def test_suite():
-    return unittest.makeSuite(BBBTests)
+    return unittest.defaultTestLoader.loadTestsFromTestCase(BBBTests)

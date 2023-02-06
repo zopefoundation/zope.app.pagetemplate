@@ -12,7 +12,7 @@
 #
 ##############################################################################
 # This package is developed by the Zope Toolkit project, documented here:
-# http://docs.zope.org/zopetoolkit
+# https://zopetoolkit.readthedocs.io/
 # When developing and releasing this package, please follow the documented
 # Zope Toolkit policies as described by this documentation.
 ##############################################################################
@@ -32,9 +32,9 @@ version = '5.0.dev0'
 
 setup(name='zope.app.pagetemplate',
       version=version,
-      url='http://github.com/zopefoundation/zope.app.pagetemplate',
+      url='https://github.com/zopefoundation/zope.app.pagetemplate',
       author='Zope Foundation and Contributors',
-      author_email='zope-dev@zope.org',
+      author_email='zope-dev@zope.dev',
       description='PageTemplate integration for Zope 3',
       long_description=(
           read('README.rst')
@@ -64,6 +64,7 @@ setup(name='zope.app.pagetemplate',
       package_dir={'': 'src'},
       namespace_packages=['zope', 'zope.app'],
       include_package_data=True,
+      python_requires='>=3.7',
       install_requires=[
           'setuptools',
           'zope.browserpage>=3.12.0',

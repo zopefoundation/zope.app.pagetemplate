@@ -31,7 +31,7 @@ from zope.traversing.api import getName
 @implementer(IDCTimes,
              IDCDescriptiveProperties,
              ITALESFunctionNamespace)
-class ZopeTalesAPI(object):
+class ZopeTalesAPI:
 
     def __init__(self, context):
         self.context = context
