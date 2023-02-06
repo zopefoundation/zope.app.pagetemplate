@@ -15,15 +15,14 @@
 """
 
 
-from datetime import datetime
 import unittest
+from datetime import datetime
 
+from zope.app.pagetemplate.talesapi import ZopeTalesAPI
+from zope.dublincore.interfaces import IZopeDublinCore
 from zope.interface import implementer
 from zope.size.interfaces import ISized
 from zope.traversing.interfaces import IPhysicallyLocatable
-from zope.dublincore.interfaces import IZopeDublinCore
-
-from zope.app.pagetemplate.talesapi import ZopeTalesAPI
 
 
 @implementer(IZopeDublinCore,  # not really, but who's checking. ;)

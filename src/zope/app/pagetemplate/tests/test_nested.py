@@ -4,10 +4,9 @@ __docformat__ = "reStructuredText"
 
 import unittest
 
+from zope.browserpage import ViewPageTemplateFile
 from zope.component.testing import PlacelessSetup
 from zope.publisher.browser import TestRequest
-
-from zope.browserpage import ViewPageTemplateFile
 
 
 class Context(object):

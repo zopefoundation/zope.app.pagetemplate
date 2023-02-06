@@ -20,8 +20,8 @@ urllib to be functional to avoid test duplication.
 """
 
 import unittest
-
 from doctest import DocTestSuite
+
 from zope.app.pagetemplate.urlquote import URLQuote
 
 

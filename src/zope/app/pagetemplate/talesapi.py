@@ -18,13 +18,13 @@ $Id$
 
 __docformat__ = 'restructuredtext'
 
-from zope.interface import implementer
-from zope.size.interfaces import ISized
-from zope.security.interfaces import Unauthorized
-from zope.tales.interfaces import ITALESFunctionNamespace
 from zope.dublincore.interfaces import IDCDescriptiveProperties
 from zope.dublincore.interfaces import IDCTimes
 from zope.dublincore.interfaces import IZopeDublinCore
+from zope.interface import implementer
+from zope.security.interfaces import Unauthorized
+from zope.size.interfaces import ISized
+from zope.tales.interfaces import ITALESFunctionNamespace
 from zope.traversing.api import getName
 
 

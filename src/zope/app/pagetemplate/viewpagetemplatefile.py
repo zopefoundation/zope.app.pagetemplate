@@ -17,7 +17,7 @@
 __docformat__ = 'restructuredtext'
 
 # BBB
-from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
-from zope.browserpage.viewpagetemplatefile import ViewMapper
 from zope.browserpage.viewpagetemplatefile import BoundPageTemplate
 from zope.browserpage.viewpagetemplatefile import NoTraverser
+from zope.browserpage.viewpagetemplatefile import ViewMapper
+from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile

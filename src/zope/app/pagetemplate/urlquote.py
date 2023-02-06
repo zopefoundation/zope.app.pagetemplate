@@ -19,9 +19,9 @@ __docformat__ = 'restructuredtext'
 import six
 from six.moves import urllib_parse as urllib
 
+from zope.app.pagetemplate.interfaces import IURLQuote
 from zope.interface import implementer
 from zope.traversing.interfaces import IPathAdapter
-from zope.app.pagetemplate.interfaces import IURLQuote
 
 
 def _safe_as_text(s):

@@ -17,14 +17,13 @@ $Id$
 """
 import unittest
 
+from zope.app.pagetemplate.tests.testpackage.content import Content
+from zope.app.pagetemplate.tests.testpackage.content import PTComponent
 from zope.component import provideAdapter
 from zope.component.testing import PlacelessSetup
 from zope.container.interfaces import ISimpleReadContainer
 from zope.container.traversal import ContainerTraversable
 from zope.traversing.interfaces import ITraversable
-
-from zope.app.pagetemplate.tests.testpackage.content import Content
-from zope.app.pagetemplate.tests.testpackage.content import PTComponent
 
 
 def setUpTraversal():

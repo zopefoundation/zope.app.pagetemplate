@@ -16,7 +16,7 @@
 """
 __docformat__ = 'restructuredtext'
 
+from zope.browserpage.simpleviewclass import SimpleViewClass
+from zope.browserpage.simpleviewclass import simple
 # BBB
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
-from zope.browserpage.simpleviewclass import simple
-from zope.browserpage.simpleviewclass import SimpleViewClass
