@@ -36,7 +36,7 @@ def setUpTraversal():
 class BindingTestCase(PlacelessSetup, unittest.TestCase):
 
     def setUp(self):
-        super(BindingTestCase, self).setUp()
+        super().setUp()
         setUpTraversal()
 
     def test_binding(self):
@@ -48,4 +48,4 @@ class BindingTestCase(PlacelessSetup, unittest.TestCase):
 
 
 def test_suite():
-    return unittest.makeSuite(BindingTestCase)
+    return unittest.defaultTestLoader.loadTestsFromTestCase(BindingTestCase)

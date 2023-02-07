@@ -18,6 +18,6 @@ __docformat__ = 'restructuredtext'
 
 # BBB
 from zope.browserpage.metaconfigure import clear
-from zope.browserpage.metadirectives import IExpressionTypeDirective
 from zope.browserpage.metaconfigure import expressiontype
 from zope.browserpage.metaconfigure import registerType
+from zope.browserpage.metadirectives import IExpressionTypeDirective

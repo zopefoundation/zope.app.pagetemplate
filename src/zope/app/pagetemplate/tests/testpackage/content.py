@@ -18,12 +18,12 @@ $Id$
 from zope.browserpage import ViewPageTemplateFile
 
 
-class Content(object):
+class Content:
     def getSomething(self):
         return 42
 
 
-class PTComponent(object):
+class PTComponent:
     def __init__(self, content, request=None):
         self.context = content
         self.request = request

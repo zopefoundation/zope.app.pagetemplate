@@ -15,13 +15,13 @@
 """
 
 
-from datetime import datetime
 import unittest
+from datetime import datetime
 
+from zope.dublincore.interfaces import IZopeDublinCore
 from zope.interface import implementer
 from zope.size.interfaces import ISized
 from zope.traversing.interfaces import IPhysicallyLocatable
-from zope.dublincore.interfaces import IZopeDublinCore
 
 from zope.app.pagetemplate.talesapi import ZopeTalesAPI
 
@@ -29,21 +29,21 @@ from zope.app.pagetemplate.talesapi import ZopeTalesAPI
 @implementer(IZopeDublinCore,  # not really, but who's checking. ;)
              IPhysicallyLocatable,  # not really
              ISized)
-class TestObject(object):
+class TestObject:
 
-    description = u"This object stores some number of apples"
-    title = u"apple cart"
+    description = "This object stores some number of apples"
+    title = "apple cart"
     created = datetime(2000, 10, 1, 23, 11, 00)
     modified = datetime(2003, 1, 2, 3, 4, 5)
 
     def sizeForSorting(self):
-        return u'apples', 5
+        return 'apples', 5
 
     def sizeForDisplay(self):
-        return u'5 apples'
+        return '5 apples'
 
     def getName(self):
-        return u'apples'
+        return 'apples'
 
 
 class TestAPI(unittest.TestCase):
@@ -65,9 +65,9 @@ class TestAPI(unittest.TestCase):
         self.assertEqual(TestObject.title, api.title_or_name())
 
         testObject2 = TestObject()
-        testObject2.title = u""
+        testObject2.title = ""
         api = ZopeTalesAPI(testObject2)
-        self.assertEqual(u'apples', api.title_or_name())
+        self.assertEqual('apples', api.title_or_name())
 
     def test_size(self):
         api = ZopeTalesAPI(TestObject())

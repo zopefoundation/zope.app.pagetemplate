@@ -4,23 +4,22 @@ __docformat__ = "reStructuredText"
 
 import unittest
 
+from zope.browserpage import ViewPageTemplateFile
 from zope.component.testing import PlacelessSetup
 from zope.publisher.browser import TestRequest
 
-from zope.browserpage import ViewPageTemplateFile
 
-
-class Context(object):
+class Context:
     pass
 
 
-class View(object):
+class View:
     def __init__(self, context, request):
         self.context = context
         self.request = request
 
 
-EXPECTED = u"""\
+EXPECTED = """\
 <html>
 <head>
 <title>Example: outer</title>

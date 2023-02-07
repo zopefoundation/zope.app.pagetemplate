@@ -15,8 +15,8 @@
 """
 
 # BBB
-from zope.browserpage.namedtemplate import implementation
 from zope.browserpage.namedtemplate import INamedTemplate
 from zope.browserpage.namedtemplate import NamedTemplate
 from zope.browserpage.namedtemplate import NamedTemplateImplementation
 from zope.browserpage.namedtemplate import NamedTemplatePathAdapter
+from zope.browserpage.namedtemplate import implementation

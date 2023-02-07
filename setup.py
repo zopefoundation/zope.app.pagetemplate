@@ -12,12 +12,14 @@
 #
 ##############################################################################
 # This package is developed by the Zope Toolkit project, documented here:
-# http://docs.zope.org/zopetoolkit
+# https://zopetoolkit.readthedocs.io/
 # When developing and releasing this package, please follow the documented
 # Zope Toolkit policies as described by this documentation.
 ##############################################################################
-from setuptools import setup, find_packages
 import os.path
+
+from setuptools import find_packages
+from setuptools import setup
 
 
 def read(*rnames):
@@ -25,14 +27,14 @@ def read(*rnames):
         return f.read()
 
 
-version = '4.1.0.dev0'
+version = '5.0.dev0'
 
 
 setup(name='zope.app.pagetemplate',
       version=version,
-      url='http://github.com/zopefoundation/zope.app.pagetemplate',
+      url='https://github.com/zopefoundation/zope.app.pagetemplate',
       author='Zope Foundation and Contributors',
-      author_email='zope-dev@zope.org',
+      author_email='zope-dev@zope.dev',
       description='PageTemplate integration for Zope 3',
       long_description=(
           read('README.rst')
@@ -46,23 +48,23 @@ setup(name='zope.app.pagetemplate',
           'Intended Audience :: Developers',
           'License :: OSI Approved :: Zope Public License',
           'Programming Language :: Python',
-          'Programming Language :: Python :: 2.7',
-          'Programming Language :: Python :: 3.5',
-          'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7',
           'Programming Language :: Python :: 3.8',
           'Programming Language :: Python :: 3.9',
+          'Programming Language :: Python :: 3.10',
+          'Programming Language :: Python :: 3.11',
           'Programming Language :: Python :: Implementation :: CPython',
           'Programming Language :: Python :: Implementation :: PyPy',
           'Natural Language :: English',
           'Operating System :: OS Independent',
           'Topic :: Internet :: WWW/HTTP',
-          'Framework :: Zope :: 3'
+          'Framework :: Zope :: 3',
       ],
       packages=find_packages('src'),
       package_dir={'': 'src'},
       namespace_packages=['zope', 'zope.app'],
       include_package_data=True,
+      python_requires='>=3.7',
       install_requires=[
           'setuptools',
           'zope.browserpage>=3.12.0',
