@@ -27,7 +27,7 @@ def read(*rnames):
         return f.read()
 
 
-version = '5.0'
+version = '5.1.dev0'
 
 
 setup(name='zope.app.pagetemplate',
