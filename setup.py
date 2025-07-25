@@ -18,7 +18,6 @@
 ##############################################################################
 import os.path
 
-from setuptools import find_packages
 from setuptools import setup
 
 
@@ -60,9 +59,6 @@ setup(name='zope.app.pagetemplate',
           'Topic :: Internet :: WWW/HTTP',
           'Framework :: Zope :: 3',
       ],
-      packages=find_packages('src'),
-      package_dir={'': 'src'},
-      namespace_packages=['zope', 'zope.app'],
       include_package_data=True,
       python_requires='>=3.9',
       install_requires=[
@@ -85,7 +81,7 @@ setup(name='zope.app.pagetemplate',
               'zope.component [hook,test]',
               'zope.container',
               'zope.publisher',
-              'zope.testrunner',
+              'zope.testrunner >= 6.4',
           ],
       },
       zip_safe=False,
