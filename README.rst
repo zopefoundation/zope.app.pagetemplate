@@ -8,4 +8,3 @@ server.  In particular, it provides:
 * TALES namespace adapters for easy access to DublinCore metadata
   (e.g. ``obj/zope:title``) and URL quoting
   (e.g. ``obj/@@absolute_url/url:quote``).
-
